@@ -10,6 +10,8 @@ body {
     direction: rtl;
     font-family: Tajawal, Cairo, Arial, sans-serif;
     background: #f8f1e7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
 }
 
 .congrats-static-site {
@@ -24,9 +26,10 @@ body {
 
     color: #2f2218;
     background:
-        radial-gradient(circle at top right, rgba(194, 140, 72, 0.18), transparent 32%),
-        radial-gradient(circle at bottom left, rgba(91, 49, 26, 0.14), transparent 34%),
-        linear-gradient(135deg, #fff8ed 0%, #f5e4ca 50%, #ead0aa 100%);
+        radial-gradient(circle at 88% 10%, rgba(207, 164, 89, 0.26), transparent 30%),
+        radial-gradient(circle at 12% 88%, rgba(91, 49, 26, 0.15), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.42), transparent 48%),
+        linear-gradient(135deg, #fff9ef 0%, #f5e5cb 48%, #ead1aa 100%);
 }
 
 .static-card {
@@ -36,6 +39,7 @@ body {
     padding: clamp(34px, 6vw, 74px) clamp(22px, 5vw, 58px);
     box-sizing: border-box;
     overflow: hidden;
+    isolation: isolate;
 
     display: flex;
     flex-direction: column;
@@ -46,26 +50,77 @@ body {
 
     border-radius: clamp(32px, 5vw, 52px);
     background:
-        linear-gradient(#fffaf2, #fffaf2) padding-box,
-        linear-gradient(135deg, #8a5a28, #e4b76b, #8a5a28) border-box;
+        linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(255, 247, 234, 0.96)) padding-box,
+        linear-gradient(135deg, #7b4a1f 0%, #d7a857 24%, #fff0bd 48%, #b47a32 74%, #6f421d 100%) border-box;
     border: 3px solid transparent;
 
     box-shadow:
-        0 34px 90px rgba(91, 49, 26, 0.20),
-        inset 0 0 0 10px rgba(228, 183, 107, 0.10);
+        0 36px 95px rgba(91, 49, 26, 0.22),
+        0 14px 34px rgba(91, 49, 26, 0.14),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.78),
+        inset 0 0 0 10px rgba(223, 178, 103, 0.10);
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 232, 183, 0.55), transparent 34%),
+        radial-gradient(circle at 50% 82%, rgba(184, 134, 63, 0.16), transparent 36%);
+}
+
+.card-pattern {
+    position: absolute;
+    inset: 22px;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: clamp(24px, 4vw, 44px);
+    opacity: 0.42;
+    background-image:
+        linear-gradient(45deg, rgba(138, 90, 40, 0.055) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(138, 90, 40, 0.055) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(138, 90, 40, 0.055) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(138, 90, 40, 0.055) 75%);
+    background-size: 34px 34px;
+    background-position: 0 0, 0 17px, 17px -17px, -17px 0;
+    mask-image: radial-gradient(circle at center, black 42%, transparent 86%);
 }
 
 .corner {
     position: absolute;
     width: 230px;
     height: 230px;
-    border: 2px solid rgba(138, 90, 40, 0.24);
     pointer-events: none;
+}
+
+.corner::before,
+.corner::after {
+    content: "";
+    position: absolute;
+    border-color: rgba(122, 75, 31, 0.34);
+    border-style: solid;
+}
+
+.corner::before {
+    inset: 0;
+    border-width: 2px;
+}
+
+.corner::after {
+    inset: 14px;
+    border-width: 1px;
+    opacity: 0.65;
 }
 
 .corner-top {
     top: 26px;
     right: 26px;
+}
+
+.corner-top::before,
+.corner-top::after {
     border-left: 0;
     border-bottom: 0;
     border-radius: 0 36px 0 0;
@@ -74,9 +129,31 @@ body {
 .corner-bottom {
     bottom: 26px;
     left: 26px;
+}
+
+.corner-bottom::before,
+.corner-bottom::after {
     border-right: 0;
     border-top: 0;
     border-radius: 0 0 0 36px;
+}
+
+.ornament {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(138, 90, 40, 0.48);
+    font-size: clamp(20px, 3vw, 34px);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.ornament-top {
+    top: clamp(18px, 3vw, 34px);
+}
+
+.ornament-bottom {
+    bottom: clamp(18px, 3vw, 34px);
 }
 
 .static-header {
@@ -87,12 +164,44 @@ body {
 
 .small-title {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 24px;
     border-radius: 999px;
-    background: #f4dfbd;
-    color: #7a4b1f;
+
+    background:
+        linear-gradient(135deg, #fff3d7, #efd09a);
+    color: #6f421d;
+
+    border: 1px solid rgba(138, 90, 40, 0.20);
+    box-shadow:
+        0 10px 26px rgba(138, 90, 40, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
     font-size: clamp(16px, 2.2vw, 28px);
     font-weight: 900;
+    letter-spacing: 0.3px;
+}
+
+.icon-frame {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    border-radius: clamp(32px, 4vw, 48px);
+    background:
+        linear-gradient(135deg, rgba(255, 244, 219, 0.95), rgba(213, 162, 82, 0.75));
+    box-shadow:
+        0 18px 36px rgba(91, 49, 26, 0.16),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.58);
+}
+
+.icon-frame::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: inherit;
+    border: 1px solid rgba(184, 134, 63, 0.28);
 }
 
 .icon {
@@ -101,8 +210,17 @@ body {
     display: grid;
     place-items: center;
     border-radius: clamp(28px, 4vw, 42px);
-    background: linear-gradient(135deg, #fff4db, #e6bd72);
+
+    background:
+        radial-gradient(circle at 35% 25%, #fff9ea, transparent 42%),
+        linear-gradient(135deg, #fff1ce, #d9a456);
+
+    color: #4a2c16;
     font-size: clamp(48px, 8vw, 82px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        inset 0 -10px 22px rgba(111, 66, 29, 0.10);
 }
 
 .content {
@@ -114,19 +232,43 @@ body {
 .message {
     max-width: 760px;
     margin: 0 auto;
-    color: #5f4127;
+    color: #5a3b22;
+
     font-size: clamp(22px, 4vw, 46px);
     font-weight: 800;
     line-height: 1.9;
+
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .names {
+    position: relative;
     margin: 0 auto;
     max-width: 760px;
-    color: #2f2218;
+
+    color: #2d1f15;
     font-size: clamp(42px, 8vw, 86px);
     font-weight: 900;
     line-height: 1.25;
+
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    letter-spacing: -0.5px;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.85),
+        0 10px 26px rgba(91, 49, 26, 0.10);
+}
+
+.names::before {
+    content: "";
+    display: block;
+    width: 92px;
+    height: 2px;
+    margin: 0 auto 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 63, 0.95), transparent);
 }
 
 .names::after {
@@ -136,7 +278,9 @@ body {
     height: 4px;
     margin: 28px auto 0;
     border-radius: 999px;
-    background: linear-gradient(90deg, transparent, #b8863f, transparent);
+    background:
+        linear-gradient(90deg, transparent, #b8863f, #f3d28a, #b8863f, transparent);
+    box-shadow: 0 7px 18px rgba(184, 134, 63, 0.18);
 }
 
 .info-box {
@@ -149,10 +293,14 @@ body {
 .info-box a {
     padding: 22px 24px;
     border-radius: 26px;
-    background: #fff4df;
+    background:
+        linear-gradient(180deg, #fff7e7, #fff0d7);
     border: 1px solid rgba(138, 90, 40, 0.18);
     text-decoration: none;
     color: #2f2218;
+    box-shadow:
+        0 12px 28px rgba(91, 49, 26, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .info-box small {
@@ -172,9 +320,22 @@ body {
 }
 
 .closing {
-    color: #7a4b1f;
+    position: relative;
+    display: inline-flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+
+    color: #70451f;
     font-size: clamp(20px, 3vw, 34px);
     font-weight: 900;
+    letter-spacing: 0.2px;
+
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: rgba(255, 246, 229, 0.68);
+    border: 1px solid rgba(138, 90, 40, 0.13);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
 }
 
 @media (max-width: 640px) {
@@ -200,5 +361,22 @@ body {
         width: 112px;
         height: 112px;
         font-size: 58px;
+    }
+
+    .corner {
+        width: 170px;
+        height: 170px;
+    }
+}
+
+@media print {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 }
