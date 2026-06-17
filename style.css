@@ -1,0 +1,204 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    direction: rtl;
+    font-family: Tajawal, Cairo, Arial, sans-serif;
+    background: #f8f1e7;
+}
+
+.congrats-static-site {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: clamp(18px, 4vw, 44px);
+    box-sizing: border-box;
+
+    display: grid;
+    place-items: center;
+
+    color: #2f2218;
+    background:
+        radial-gradient(circle at top right, rgba(194, 140, 72, 0.18), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(91, 49, 26, 0.14), transparent 34%),
+        linear-gradient(135deg, #fff8ed 0%, #f5e4ca 50%, #ead0aa 100%);
+}
+
+.static-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: clamp(34px, 6vw, 74px) clamp(22px, 5vw, 58px);
+    box-sizing: border-box;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(20px, 4vw, 44px);
+
+    text-align: center;
+
+    border-radius: clamp(32px, 5vw, 52px);
+    background:
+        linear-gradient(#fffaf2, #fffaf2) padding-box,
+        linear-gradient(135deg, #8a5a28, #e4b76b, #8a5a28) border-box;
+    border: 3px solid transparent;
+
+    box-shadow:
+        0 34px 90px rgba(91, 49, 26, 0.20),
+        inset 0 0 0 10px rgba(228, 183, 107, 0.10);
+}
+
+.corner {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border: 2px solid rgba(138, 90, 40, 0.24);
+    pointer-events: none;
+}
+
+.corner-top {
+    top: 26px;
+    right: 26px;
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 0 36px 0 0;
+}
+
+.corner-bottom {
+    bottom: 26px;
+    left: 26px;
+    border-right: 0;
+    border-top: 0;
+    border-radius: 0 0 0 36px;
+}
+
+.static-header {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+}
+
+.small-title {
+    display: inline-flex;
+    padding: 10px 24px;
+    border-radius: 999px;
+    background: #f4dfbd;
+    color: #7a4b1f;
+    font-size: clamp(16px, 2.2vw, 28px);
+    font-weight: 900;
+}
+
+.icon {
+    width: clamp(92px, 14vw, 150px);
+    height: clamp(92px, 14vw, 150px);
+    display: grid;
+    place-items: center;
+    border-radius: clamp(28px, 4vw, 42px);
+    background: linear-gradient(135deg, #fff4db, #e6bd72);
+    font-size: clamp(48px, 8vw, 82px);
+}
+
+.content {
+    display: grid;
+    gap: 26px;
+    justify-items: center;
+}
+
+.message {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #5f4127;
+    font-size: clamp(22px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.9;
+}
+
+.names {
+    margin: 0 auto;
+    max-width: 760px;
+    color: #2f2218;
+    font-size: clamp(42px, 8vw, 86px);
+    font-weight: 900;
+    line-height: 1.25;
+}
+
+.names::after {
+    content: "";
+    display: block;
+    width: 180px;
+    height: 4px;
+    margin: 28px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, #b8863f, transparent);
+}
+
+.info-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.info-box div,
+.info-box a {
+    padding: 22px 24px;
+    border-radius: 26px;
+    background: #fff4df;
+    border: 1px solid rgba(138, 90, 40, 0.18);
+    text-decoration: none;
+    color: #2f2218;
+}
+
+.info-box small {
+    display: block;
+    margin-bottom: 8px;
+    color: #8a5a28;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.info-box strong {
+    display: block;
+    color: #2f2218;
+    font-size: clamp(18px, 2.8vw, 30px);
+    font-weight: 900;
+    line-height: 1.6;
+}
+
+.closing {
+    color: #7a4b1f;
+    font-size: clamp(20px, 3vw, 34px);
+    font-weight: 900;
+}
+
+@media (max-width: 640px) {
+    .congrats-static-site {
+        padding: 18px;
+    }
+
+    .static-card {
+        min-height: 760px;
+        padding: 46px 24px;
+        border-radius: 36px;
+    }
+
+    .message {
+        font-size: 24px;
+    }
+
+    .names {
+        font-size: 44px;
+    }
+
+    .icon {
+        width: 112px;
+        height: 112px;
+        font-size: 58px;
+    }
+}
