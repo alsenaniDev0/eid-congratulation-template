@@ -1,6 +1,6 @@
 {
-    "id": "royal-wedding",
-    "name": "دعوة زفاف ملكية",
+    "id": "eid-aladha-greeting",
+    "name": "تهنئة عيد الأضحى المبارك",
     "version": "1.0.0",
     "html": "index.html",
     "css": "style.css",
@@ -9,57 +9,58 @@
             "key": "icon",
             "type": "icon",
             "required": true,
+            "label": "الأيقونة",
+            "defaultValue": "✨",
             "options": [
-                {
-                    "label": "💌",
-                    "value": "💌"
-                },
-                {
-                    "label": "💍",
-                    "value": "💍"
-                },
-                {
-                    "label": "👑",
-                    "value": "👑"
-                },
-                {
-                    "label": "🎓",
-                    "value": "🎓"
-                },
-                {
-                    "value": "🌸",
-                    "label": "🌸"
-                },
                 {
                     "label": "✨",
                     "value": "✨"
                 },
                 {
-                    "value": "🎉",
-                    "label": "🎉"
+                    "label": "🌙",
+                    "value": "🌙"
+                },
+                {
+                    "label": "🕋",
+                    "value": "🕋"
+                },
+                {
+                    "label": "🐏",
+                    "value": "🐏"
+                },
+                {
+                    "label": "🌸",
+                    "value": "🌸"
+                },
+                {
+                    "label": "🎉",
+                    "value": "🎉"
+                },
+                {
+                    "label": "💌",
+                    "value": "💌"
                 }
-            ],
-            "defaultValue": "💌",
-            "label": "الأيقونة"
+            ]
         },
         {
             "key": "message",
-            "maxLength": 220,
             "type": "textarea",
             "required": true,
-            "defaultValue": "يشرفنا دعوتكم لحضور مناسبتنا",
             "label": "نص التهنئة",
-            "minLength": 5
+            "defaultValue": "كل عام وأنتم بخير بمناسبة عيد الأضحى المبارك، أعاده الله عليكم بالخير والبركة والسعادة.",
+            "placeholder": "اكتب نص التهنئة هنا",
+            "minLength": 5,
+            "maxLength": 220
         },
         {
+            "key": "names",
+            "type": "names",
+            "required": true,
+            "label": "اسم المرسل",
             "placeholder": "مثال: محمد",
             "separator": " و ",
-            "label": "الأسماء",
-            "maxItems": 10,
-            "key": "names",
-            "required": true,
             "minItems": 1,
-            "type": "names"
+            "maxItems": 10
         }
     ]
 }
